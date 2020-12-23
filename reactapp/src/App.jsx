@@ -1,11 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
-import Navigation from "./Navigation";
+import user from "./reducers/user";
+import Navigation from "./navigation/Navigation";
 
-const store = createStore(combineReducers({}));
+const store = createStore(combineReducers({ user }));
 
 const App = () => {
   return (
