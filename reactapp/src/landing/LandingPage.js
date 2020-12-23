@@ -10,9 +10,18 @@ import {
   FormGroup,
   Label,
   Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
   FormText,
 } from "reactstrap";
 import logo from "../Logo_Forky_light.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faEyeSlash,
+  faUserCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
 
 const LandingPage = () => {
@@ -47,48 +56,59 @@ const LandingPage = () => {
             <h1>Recommencer...</h1>
           </Col>
         </Row>
-        <Row xs="2">
+        <Row xs="1" lg="2" style={{ display: "flex", alignItems: "center" }}>
           <Col>
             <div className="Sign">
               <Form>
+                <h3 className="title-form">Se connecter</h3>
                 <FormGroup>
                   <Label for="exampleEmail">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder="with a placeholder"
-                  />
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Entrez votre email"
+                      required
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                    ></Input>
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <Label for="email">Mot de passe</Label>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <FontAwesomeIcon icon={faEyeSlash} />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Entrez votre mot de passe"
+                      required
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    ></Input>
+                  </InputGroup>
                 </FormGroup>
 
-                <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder="with a placeholder"
-                  />
-                </FormGroup>
-
-                <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder="with a placeholder"
-                  />
-                </FormGroup>
                 {/* <h5 className="error-message">{errorMessage}</h5> */}
                 <Button
-                  style={{ width: "80px" }}
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   handleSubmitSignUp(props);
-                  // }}
+                  className="btn-landing"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // handleSubmitSignUp(props);
+                  }}
                 >
-                  Sign-up
+                  Connectez moi
                 </Button>
               </Form>
             </div>
@@ -96,44 +116,93 @@ const LandingPage = () => {
           <Col>
             <div className="Sign">
               <Form>
+                <h3 className="title-form">S'inscrire</h3>
+                <FormGroup>
+                  <Label for="exampleEmail">Nom</Label>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <FontAwesomeIcon icon={faUserCircle} />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="Votre nom"
+                      required
+                      onChange={(e) => setPseudo(e.target.value)}
+                      value={pseudo}
+                    ></Input>
+                  </InputGroup>
+                </FormGroup>
                 <FormGroup>
                   <Label for="exampleEmail">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder="with a placeholder"
-                  />
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Entrez votre email"
+                      required
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                    ></Input>
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <Label for="email">Mot de passe</Label>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <FontAwesomeIcon icon={faEyeSlash} />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Entrez votre mot de passe"
+                      required
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    ></Input>
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <Label for="email">Confirmez votre mot de passe</Label>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <FontAwesomeIcon icon={faEyeSlash} />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Confirmez votre mot de passe"
+                      required
+                      onChange={(e) => setPasswordConfirm(e.target.value)}
+                      value={passwordConfirm}
+                    ></Input>
+                  </InputGroup>
                 </FormGroup>
 
-                <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder="with a placeholder"
-                  />
-                </FormGroup>
-
-                <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder="with a placeholder"
-                  />
-                </FormGroup>
                 {/* <h5 className="error-message">{errorMessage}</h5> */}
                 <Button
-                  style={{ width: "80px" }}
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   handleSubmitSignUp(props);
-                  // }}
+                  className="btn-landing"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // handleSubmitSignUp(props);
+                  }}
                 >
-                  Sign-up
+                  Inscrivez moi
                 </Button>
               </Form>
             </div>
