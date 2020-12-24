@@ -56,7 +56,7 @@ const SignUp = ({ setReduxUser }) => {
             id: response.user._id,
             token: response.user.token,
           });
-          localStorage.setItem("userToken", response.userExists.token);
+          localStorage.setItem("userToken", response.user.token);
           setSignupError(false);
         } else {
           setSignupError(true);
@@ -77,9 +77,9 @@ const SignUp = ({ setReduxUser }) => {
 
   return (
     <Col>
-      <div className="Sign">
+      <div className="sign">
         <Form>
-          <h3 className="title-form">S'inscrire</h3>
+          <h2 className="title-form">S'inscrire</h2>
           <FormGroup>
             <Label for="exampleEmail">Nom</Label>
             <InputGroup>

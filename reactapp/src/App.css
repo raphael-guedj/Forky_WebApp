@@ -18,7 +18,7 @@
   height: 160px;
 }
 
-.Sign {
+.sign {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,6 +35,8 @@
 .title-form {
   text-align: center;
   padding: 8% 0;
+  font-size: 200%;
+  letter-spacing: 3px;
 }
 
 .Login-input {
@@ -62,9 +64,10 @@ NAVBAR----------------------------------------------
 ---------------------------------------------------*/
 
 /*Desktop View*/
-.header {
+.nav-header {
   display: flex;
   background-color: #ececec;
+  box-shadow: 0 0 5px #f9b34c;
   justify-content: space-between;
   align-items: center;
   padding: 0px 40px;
@@ -142,7 +145,7 @@ NAVBAR----------------------------------------------
 
 @media (max-width: 800px) {
   /*Mobile View */
-  .header {
+  .nav-header {
     padding: 0px 10px;
   }
 
@@ -182,4 +185,80 @@ NAVBAR----------------------------------------------
   .mobile-menu {
     display: block;
   }
+}
+
+/*--------------------------------------------------
+HOMEPAGE & CARD----------------------------------------------
+---------------------------------------------------*/
+
+.home-head {
+  height: 100vh;
+  margin-top: 25px;
+}
+
+.card-layout {
+  border-width: 2px;
+  border-color: #418581;
+  font-family: "Roboto";
+  background-color: #ececec;
+  margin: 45px 20px;
+}
+
+.layout-headercard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-card:link,
+.link-card:visited {
+  text-decoration: none;
+  color: #418581;
+  font-weight: 600;
+}
+
+.icon-card {
+  color: #f9b34c;
+  padding-right: 8px;
+  font-size: 25px;
+}
+.icon-card-empty {
+  color: #c7d3dc;
+  padding-right: 8px;
+  font-size: 25px;
+}
+
+.icon-card-big {
+  color: #f9b34c;
+  padding-right: 8px;
+  font-size: 200%;
+}
+
+.text-distance {
+  font-size: 12px;
+  font-weight: bold;
+  color: #c7d3dc;
+  margin-bottom: 0px;
+}
+
+.layout-imagelocalisation {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 20px;
+}
+
+.layout-localisation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.layout-job {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #418581;
+  font-size: 16px;
+  color: #e4e4e4;
 }

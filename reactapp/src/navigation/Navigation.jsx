@@ -14,6 +14,8 @@ const Navigation = ({ setReduxUser, userState }) => {
       setToken(token);
     };
     getUser();
+
+    // localStorage.removeItem("userToken");
   }, []);
 
   useEffect(() => {

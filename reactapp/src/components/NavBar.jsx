@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/Logo_Forky_dark.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes, faBell } from "@fortawesome/free-solid-svg-icons";
+import "../App.css";
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
@@ -12,7 +13,7 @@ const NavBar = () => {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <div className="header">
+    <div className="nav-header">
       <div className="logo-nav">
         <div className="logo-container">
           <Link to="/">

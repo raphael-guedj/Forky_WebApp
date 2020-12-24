@@ -52,9 +52,9 @@ const SignIn = ({ setReduxUser }) => {
 
   return (
     <Col>
-      <div className="Sign">
+      <div className="sign">
         <Form>
-          <h3 className="title-form">Se connecter</h3>
+          <h2 className="title-form">Se connecter</h2>
           <FormGroup>
             <Label for="exampleEmail">Email</Label>
             <InputGroup>

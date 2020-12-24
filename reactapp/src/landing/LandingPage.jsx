@@ -27,8 +27,8 @@ const LandingPage = () => {
         </Row>
         <Row xs="1">
           <Col style={title}>
-            <h1>Déjeuner</h1>
-            <h1>Rencontrer</h1>
+            <h1>Déjeuner,</h1>
+            <h1>Rencontrer,</h1>
             <h1>Recommencer...</h1>
           </Col>
         </Row>
