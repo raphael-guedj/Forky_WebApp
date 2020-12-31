@@ -27,10 +27,6 @@ const HomeCard = ({ dataUser }) => {
 
   const classes = useStyles();
 
-  useEffect(() => {
-    console.log(dataUser);
-  }, []);
-
   if (!dataUser) {
     return (
       <div>
@@ -44,7 +40,14 @@ const HomeCard = ({ dataUser }) => {
   return (
     <Col>
       <Card className="card-layout">
-        <Link to="/" className="link-card">
+        {/* useLocation pour faire passer un objet dans le link */}
+        <Link
+          to={{
+            pathname: "/userprofil",
+            state: dataUser,
+          }}
+          className="link-card"
+        >
           <CardBody className="layout-headercard">
             <CardTitle tag="h4" style={{ fontWeight: 700 }}>
               {dataUser.name}
@@ -80,7 +83,7 @@ const HomeCard = ({ dataUser }) => {
               <BsGeoAlt className="icon-card-big" />
               <div className="layout-localisation">
                 <CardSubtitle tag="h6" className="mb-2">
-                  13007 Marseille
+                  {dataUser.arrondissement} {dataUser.city}
                 </CardSubtitle>
                 <CardSubtitle tag="h6" className="mb-2">
                   Situé à {Math.floor(Math.random() * 999)}m
@@ -92,7 +95,7 @@ const HomeCard = ({ dataUser }) => {
           <CardBody className="layout-job">
             <CardSubtitle>
               <BsBriefcaseFill className="icon-card" />
-              Chef de Projet Digital
+              {dataUser.profession}
             </CardSubtitle>
           </CardBody>
         </Link>

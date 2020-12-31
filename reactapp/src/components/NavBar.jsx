@@ -22,13 +22,13 @@ const NavBar = () => {
         </div>
         <ul className={click ? "nav-options active" : "nav-options"}>
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">Accueil</a>
+            <Link to="/">Accueil</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
             <a href="#">Mes Forkys</a>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">Profil</a>
+            <a href="/myprofil">Profil</a>
           </li>
           <li className="option-noti" onClick={closeMobileMenu}>
             <FontAwesomeIcon icon={faBell} className="notif" />

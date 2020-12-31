@@ -20,7 +20,7 @@ const LandingPage = () => {
           <Col style={{ display: "flex", justifyContent: "center" }}>
             <img
               className="logo"
-              src="./images/Logo_Forky_light.png"
+              src="../images/Logo_Forky_light.png"
               alt="logo_forky"
             ></img>
           </Col>

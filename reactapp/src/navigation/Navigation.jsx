@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "../landing/LandingPage";
 import HomePage from "../home/HomePage";
+import ProfilPage from "../home/ProfilPage";
+import EditProfil from "../profil/EditProfil";
+import MyProfil from "../profil/MyProfil";
 
 const Navigation = ({ setReduxUser, userState }) => {
   const [token, setToken] = useState(null);
@@ -24,7 +27,7 @@ const Navigation = ({ setReduxUser, userState }) => {
         let rawResponse = await fetch(`/get-user?token=` + token);
 
         let response = await rawResponse.json();
-        console.log("ma réponse", response);
+        // console.log("ma réponse", response);
 
         setReduxUser({
           pseudo: response.user.name,
@@ -40,10 +43,13 @@ const Navigation = ({ setReduxUser, userState }) => {
 
   return userState.token ? (
     <Switch>
-      <Route path="/" exact component={HomePage} />
+      <Route exact path="/" component={HomePage} />
+      <Route path="/userprofil" component={ProfilPage} />
+      <Route path="/editprofil" component={EditProfil} />
+      <Route path="/myprofil" component={MyProfil} />
     </Switch>
   ) : (
-    <Route path="/" exact component={LandingPage} />
+    <Route path="/" component={LandingPage} />
   );
 };
 
