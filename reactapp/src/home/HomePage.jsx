@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import NavBar from "../components/NavBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSync } from "@fortawesome/free-solid-svg-icons";
 import { Container, Row, Col } from "reactstrap";
 import HomeCard from "../components/HomeCard";
 
@@ -16,6 +18,12 @@ const HomePage = ({ userState }) => {
     };
     getUser();
   }, []);
+
+  const handleRefresh = async () => {
+    let rawResponse = await fetch(`/alluser?id=${userState.id}`);
+    let response = await rawResponse.json();
+    setListUser(response.userExcl);
+  };
 
   let title = {
     display: "flex",
@@ -34,6 +42,13 @@ const HomePage = ({ userState }) => {
             <h1>Déjeuner,</h1>
             <h1>Rencontrer,</h1>
             <h1>Recommencer...</h1>
+            <div onClick={() => handleRefresh()}>
+              <FontAwesomeIcon
+                icon={faSync}
+                className="icon-about"
+                style={{ cursor: "pointer", color: "#f9b34c", fontSize: 26 }}
+              />
+            </div>
           </Col>
         </Row>
         <Row xs="1" md="2" xl="3">

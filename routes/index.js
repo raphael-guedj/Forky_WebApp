@@ -136,7 +136,8 @@ router.get("/getmydata", async function (req, res) {
 router.post("/uploadPhoto", async function (req, res, next) {
   var myUser = await userModel.findOne({ _id: req.query.id });
   let imagePath = "./imgtmp/" + uniqid() + ".jpg";
-  let resultCopy = await req.files.photo.mv(imagePath);
+  console.log(req.files.image);
+  let resultCopy = await req.files.image.mv(imagePath);
   let resultCloudinary = await cloudinary.uploader.upload(imagePath);
   let cloudinaryUrl = JSON.stringify(resultCloudinary.secure_url);
   // console.log("tot", cloudinaryUrl);

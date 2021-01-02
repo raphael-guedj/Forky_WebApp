@@ -389,12 +389,23 @@ EDIT PROFIL----------------------------------------------
 
 .btn-upload {
   margin: 10px;
-  width: 90px;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  width: 130px;
+  padding: 1px;
+  background-color: #ececec;
+  border: 1px solid #ececec;
+  color: #418581;
+  font-size: 14px;
+}
+
+.btn-upload:hover {
+  background-color: #418581;
+  border: 1px solid #418581;
+  color: #ececec;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
 .layout-language-activity {
@@ -459,4 +470,29 @@ MY PROFIL----------------------------------------------
 .setting :hover {
   color: #5bafaa;
   text-decoration: none;
+}
+
+/*--------------------------------------------------
+INVITATION CARD-------------------------------------
+---------------------------------------------------*/
+
+.layout-profil-invit {
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+}
+
+.icon-invitation {
+  color: #f9b34c;
+  font-size: 40px;
+  padding-right: 20px;
+}
+
+.layout-invitation-profil {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }

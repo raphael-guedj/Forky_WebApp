@@ -19,12 +19,21 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import "../App.css";
 
 const ProfilCard = ({ userData }) => {
-  const StyledBadge = withStyles((theme) => ({
-    badge: {
-      backgroundColor: "#44b700",
-      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    },
-  }))(Badge);
+  const StyledBadge = withStyles((theme) =>
+    userData.isConnected
+      ? {
+          badge: {
+            backgroundColor: "#44b700",
+            boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+          },
+        }
+      : {
+          badge: {
+            backgroundColor: "#eb4d4b",
+            boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+          },
+        }
+  )(Badge);
 
   const useStyles = makeStyles((theme) => ({
     large: {
@@ -49,7 +58,7 @@ const ProfilCard = ({ userData }) => {
                 variant="dot"
               >
                 <Avatar
-                  src="../images/profile.jpg"
+                  src={userData.photo}
                   alt="avatar"
                   className={classes.large}
                 />

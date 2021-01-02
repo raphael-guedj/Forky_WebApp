@@ -7,6 +7,7 @@ import {
   faCamera,
   faEnvelope,
   faGlobe,
+  faSync,
 } from "@fortawesome/free-solid-svg-icons";
 import { BsBriefcaseFill } from "react-icons/bs";
 import { RiSurveyLine } from "react-icons/ri";
@@ -53,7 +54,7 @@ const EditCard = ({ userState }) => {
     const getUser = async () => {
       let rawResponse = await fetch(`/getmydata?id=${userState.id}`);
       let response = await rawResponse.json();
-      console.log("get data", response);
+
       response.myUser.name && setName(response.myUser.name);
       response.myUser.email && setEmail(response.myUser.email);
       response.myUser.profession && setJob(response.myUser.profession);
@@ -70,10 +71,32 @@ const EditCard = ({ userState }) => {
       response.myUser.wish6 && setWish6(response.myUser.wish6);
       response.myUser.language && setLanguages(response.myUser.language);
       response.myUser.food && setFood(response.myUser.food);
-      // response.myUser.photo && setPhoto(response.myUser.photo);
+      response.myUser.photo && setPhoto(response.myUser.photo);
     };
     getUser();
   }, []);
+
+  const handleRefresh = async () => {
+    let rawResponse = await fetch(`/getmydata?id=${userState.id}`);
+    let response = await rawResponse.json();
+    response.myUser.name && setName(response.myUser.name);
+    response.myUser.email && setEmail(response.myUser.email);
+    response.myUser.profession && setJob(response.myUser.profession);
+    response.myUser.city && setCity(response.myUser.city);
+    response.myUser.arrondissement &&
+      setPostcode(response.myUser.arrondissement);
+    response.myUser.description && setText(response.myUser.description);
+    response.myUser.secteur && setActivity(response.myUser.secteur);
+    response.myUser.wish1 && setWish1(response.myUser.wish1);
+    response.myUser.wish2 && setWish2(response.myUser.wish2);
+    response.myUser.wish3 && setWish3(response.myUser.wish3);
+    response.myUser.wish4 && setWish4(response.myUser.wish4);
+    response.myUser.wish5 && setWish5(response.myUser.wish5);
+    response.myUser.wish6 && setWish6(response.myUser.wish6);
+    response.myUser.language && setLanguages(response.myUser.language);
+    response.myUser.food && setFood(response.myUser.food);
+    response.myUser.photo && setPhoto(response.myUser.photo);
+  };
 
   let history = useHistory();
 
@@ -88,7 +111,7 @@ const EditCard = ({ userState }) => {
       languages.length !== 0 &&
       text !== "" &&
       food.length !== 0 &&
-      // photo !== "" &&
+      photo !== "" &&
       (wish1 || wish2 || wish3 || wish4 || wish5 || wish6)
     ) {
       let rawResponse = await fetch(`/recordmydata`, {
@@ -178,10 +201,25 @@ const EditCard = ({ userState }) => {
           style={{
             display: "flex",
             justifyContent: "center",
+            alignItems: "center",
             color: "#418581",
           }}
         >
-          <h2>Editer mon profil</h2>
+          <h2
+            style={{
+              margin: 0,
+              paddingRight: 15,
+            }}
+          >
+            Editer mon profil
+          </h2>
+          <div onClick={() => handleRefresh()}>
+            <FontAwesomeIcon
+              icon={faSync}
+              className="icon-about"
+              style={{ cursor: "pointer", color: "#f9b34c", fontSize: 26 }}
+            />
+          </div>
         </Col>
       </Row>
       <Row xs="1">
@@ -189,14 +227,18 @@ const EditCard = ({ userState }) => {
           <Card style={{ backgroundColor: "#ececec" }} className="card-image">
             <div className="style-image">
               <div style={{ display: "flex", alignItems: "center" }}>
-                <FontAwesomeIcon
-                  style={{
-                    width: 80,
-                    height: 80,
-                    color: "#418581",
-                  }}
-                  icon={faCamera}
-                />
+                {!photo ? (
+                  <FontAwesomeIcon
+                    style={{
+                      width: 80,
+                      height: 80,
+                      color: "#418581",
+                    }}
+                    icon={faCamera}
+                  />
+                ) : (
+                  <Avatar src={photo} alt="avatar" className={classes.large} />
+                )}
                 <UploadPic />
               </div>
               <CardContent className="design-maindata">

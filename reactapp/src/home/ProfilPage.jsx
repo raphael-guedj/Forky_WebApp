@@ -3,7 +3,6 @@ import ProfilCard from "../components/ProfilCard";
 import NavBar from "../components/NavBar";
 import { Container, Button } from "reactstrap";
 import { connect } from "react-redux";
-
 import { Link, useHistory } from "react-router-dom";
 import "../App.css";
 
@@ -17,11 +16,11 @@ const ProfilPage = ({ userState, location }) => {
     let rawResponse = await fetch(`/mydataprofile?id=${userState.id}`);
     let response = await rawResponse.json();
     if (response.result) {
-      console.log(response.result);
+      // console.log(response.result);
       setProfilEmpty(false);
 
       history.push({
-        pathname: "/",
+        pathname: "/sendinvitation",
         state: userData,
       });
     } else {
@@ -29,10 +28,6 @@ const ProfilPage = ({ userState, location }) => {
       history.push("/editprofil");
     }
   };
-
-  useEffect(() => {
-    console.log(profilEmpty);
-  }, [profilEmpty]);
 
   return (
     <div>

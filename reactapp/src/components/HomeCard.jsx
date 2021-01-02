@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, CardBody, CardTitle, CardSubtitle, Col } from "reactstrap";
 import Badge from "@material-ui/core/Badge";
 import Avatar from "@material-ui/core/Avatar";
@@ -11,12 +11,21 @@ import "../App.css";
 
 const HomeCard = ({ dataUser }) => {
   /*Avatar et badge from material UI */
-  const StyledBadge = withStyles((theme) => ({
-    badge: {
-      backgroundColor: "#44b700",
-      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    },
-  }))(Badge);
+  const StyledBadge = withStyles((theme) =>
+    dataUser.isConnected
+      ? {
+          badge: {
+            backgroundColor: "#44b700",
+            boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+          },
+        }
+      : {
+          badge: {
+            backgroundColor: "#eb4d4b",
+            boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+          },
+        }
+  )(Badge);
 
   const useStyles = makeStyles((theme) => ({
     large: {
@@ -74,7 +83,7 @@ const HomeCard = ({ dataUser }) => {
               variant="dot"
             >
               <Avatar
-                src="./images/profile.jpg"
+                src={dataUser.photo}
                 alt="avatar"
                 className={classes.large}
               />

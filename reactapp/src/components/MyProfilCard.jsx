@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faCog } from "@fortawesome/free-solid-svg-icons";
 import { BsBriefcaseFill } from "react-icons/bs";
@@ -43,10 +43,11 @@ const MyProfilCard = ({ userState }) => {
       response.myUser.name && setName(response.myUser.name);
       response.myUser.profession && setJob(response.myUser.profession);
       response.myUser.city && setCity(response.myUser.city);
-      // response.myUser.photo && setPhoto(response.myUser.photo);
+      response.myUser.photo && setPhoto(response.myUser.photo);
     };
     getUser();
   }, []);
+
   return (
     <Row xs="1">
       <Col>
@@ -60,28 +61,24 @@ const MyProfilCard = ({ userState }) => {
               }}
               variant="dot"
             >
-              <Avatar
-                src="../images/profile.jpg"
-                alt="avatar"
-                className={classes.large}
-              />
+              <Avatar src={photo} alt="avatar" className={classes.large} />
             </StyledBadge>
             <CardContent className="layout-myprofil">
-              <div style={{ display: "flex", marginTop: 14 }}>
+              <div style={{ display: "flex", marginTop: 20 }}>
                 <FontAwesomeIcon icon={faUserCircle} className="icon-profil" />
                 <h4>{name !== "" ? name : "Non renseigné"}</h4>
               </div>
-              <div style={{ display: "flex", marginTop: 14 }}>
+              <div style={{ display: "flex", marginTop: 20 }}>
                 <HiOutlineLocationMarker className="icon-profil" />
                 <h4> {city !== "" ? city : "Non renseigné"}</h4>
               </div>
-              <div style={{ display: "flex", marginTop: 14 }}>
+              <div style={{ display: "flex", marginTop: 20 }}>
                 <BsBriefcaseFill className="icon-profil" />
-                <h4> {job != "" ? job : "Non renseigné"}</h4>
+                <h4> {job !== "" ? job : "Non renseigné"}</h4>
               </div>
               <div className="setting">
                 <FontAwesomeIcon icon={faCog} className="icon-setting" />
-                <Link to="/">
+                <Link to="/settings">
                   <h5>Accèder à vos réglages</h5>
                 </Link>
               </div>

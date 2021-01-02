@@ -6,6 +6,8 @@ import HomePage from "../home/HomePage";
 import ProfilPage from "../home/ProfilPage";
 import EditProfil from "../profil/EditProfil";
 import MyProfil from "../profil/MyProfil";
+import SettingsPage from "../profil/SettingsPage";
+import InvitPage from "../home/InvitPage";
 
 const Navigation = ({ setReduxUser, userState }) => {
   const [token, setToken] = useState(null);
@@ -17,8 +19,6 @@ const Navigation = ({ setReduxUser, userState }) => {
       setToken(token);
     };
     getUser();
-
-    // localStorage.removeItem("userToken");
   }, []);
 
   useEffect(() => {
@@ -47,6 +47,8 @@ const Navigation = ({ setReduxUser, userState }) => {
       <Route path="/userprofil" component={ProfilPage} />
       <Route path="/editprofil" component={EditProfil} />
       <Route path="/myprofil" component={MyProfil} />
+      <Route path="/settings" component={SettingsPage} />
+      <Route path="/sendinvitation" component={InvitPage} />
     </Switch>
   ) : (
     <Route path="/" component={LandingPage} />

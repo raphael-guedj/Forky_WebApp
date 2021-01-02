@@ -1,27 +1,52 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import {
-  Row,
-  Col,
-  Input,
-  Form,
-  InputGroupText,
-  InputGroupAddon,
-  InputGroup,
-  Button,
-} from "reactstrap";
+import { Input, Form, Button } from "reactstrap";
 import "../App.css";
 
 const UploadPic = ({ userState }) => {
+  const [photo, setPhoto] = useState();
+
+  const sendPhoto = async () => {
+    var data = new FormData();
+    data.append("image", photo);
+
+    let rawResponse = await fetch(`/uploadPhoto?id=${userState.id}`, {
+      method: "post",
+      body: data,
+    });
+    await rawResponse.json();
+  };
+
   return (
-    <Form>
-      <Input type="file" className="btn-upload" />
+    <Form
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Input
+        type="file"
+        name="photo"
+        style={{
+          width: 120,
+          margin: 10,
+        }}
+        onChange={(e) => setPhoto(e.target.files[0])}
+      />
+      <Button
+        className="btn-upload"
+        onClick={() => {
+          sendPhoto();
+        }}
+      >
+        Enregistrer l'image
+      </Button>
     </Form>
   );
 };
 
 function mapStateToProps(state) {
-  // console.log("state", state.user);
   return { userState: state.user };
 }
 
