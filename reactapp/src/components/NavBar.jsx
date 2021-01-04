@@ -25,7 +25,7 @@ const NavBar = () => {
             <Link to="/">Accueil</Link>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <a href="#">Mes Forkys</a>
+            <a href="myforkys">Mes Forkys</a>
           </li>
           <li className="option" onClick={closeMobileMenu}>
             <a href="/myprofil">Profil</a>

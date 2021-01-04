@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import "date-fns";
-import { Row, Col } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { Row, Col, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserCircle,
@@ -9,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { BsBriefcaseFill } from "react-icons/bs";
 import { BiTimeFive } from "react-icons/bi";
-import { RiSurveyLine } from "react-icons/ri";
+import { IoRestaurantOutline } from "react-icons/io5";
 import { GiHotMeal } from "react-icons/gi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiBookOpen } from "react-icons/fi";
@@ -22,14 +24,10 @@ import Slider from "@material-ui/core/Slider";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
-import Typography from "@material-ui/core/Typography";
-import Tooltip from "@material-ui/core/Tooltip";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import Input from "@material-ui/core/Input";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -45,9 +43,32 @@ const InvitCard = ({ userData, userState }) => {
   const [address, setAddress] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(date);
-  // }, [date]);
+  let history = useHistory();
+
+  const sendInvit = async () => {
+    if (
+      inputMessage !== "" &&
+      duration !== "" &&
+      date !== "" &&
+      hours !== "" &&
+      kitchen !== "" &&
+      location !== "" &&
+      address !== ""
+    ) {
+      let rawResponse = await fetch(`/new-invitation`, {
+        method: "post",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${userData._id}`,
+      });
+
+      var responseJSON = await rawResponse.json();
+      if (responseJSON.response) {
+        history.push("/myforkys");
+      }
+    } else {
+      setErrorMessage(true);
+    }
+  };
 
   const StyledBadge = withStyles((theme) =>
     userData.isConnected
@@ -286,7 +307,113 @@ const InvitCard = ({ userData, userState }) => {
           </Card>
         </Col>
       </Row>
+      <Row xs="1" lg="2">
+        <Col>
+          <Card
+            style={{ backgroundColor: "#ececec", height: 180 }}
+            className="card-profil"
+          >
+            <div className="language-card">
+              <GiHotMeal className="icon-profil" />
+              <h5>Cuisine proposée: </h5>
+
+              <FormControl className={classes.formControl}>
+                <Select
+                  placeholder="Proposez une cuisine"
+                  value={kitchen}
+                  onChange={(e) => setKitchen(e.target.value)}
+                >
+                  <MenuItem value="Africain">Africain</MenuItem>
+                  <MenuItem value="Arménien">Arménien</MenuItem>
+                  <MenuItem value="Asiatique">Asiatique</MenuItem>
+                  <MenuItem value="Casher">Casher</MenuItem>
+                  <MenuItem value="Fast food">Fast food</MenuItem>
+                  <MenuItem value="Française">Français</MenuItem>
+                  <MenuItem value="Halal">Halal</MenuItem>
+                  <MenuItem value="Italien">Italien</MenuItem>
+                  <MenuItem value="Indien">Indien</MenuItem>
+                  <MenuItem value="Libanais">Libanais</MenuItem>
+                  <MenuItem value="Méditérranéen">Méditérranéen</MenuItem>
+                  <MenuItem value="Mexicain">Mexicain</MenuItem>
+                  <MenuItem value="Oriental">Oriental</MenuItem>
+                  <MenuItem value="Japonais">Japonais</MenuItem>
+                  <MenuItem value="Tapas">Tapas</MenuItem>
+                  <MenuItem value="Thaï">Thaï</MenuItem>
+                  <MenuItem value="Végétarien">Végétarien</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </Card>
+        </Col>
+        <Col>
+          <Card
+            style={{ backgroundColor: "#ececec", height: 180 }}
+            className="card-profil"
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <div className="language-card">
+                <IoRestaurantOutline className="icon-profil" />
+
+                <Input
+                  placeholder="Nom du restaurant"
+                  onChange={(e) => setLocation(e.target.value)}
+                  value={location}
+                  style={{ paddingLeft: 5, width: 200 }}
+                />
+              </div>
+              <div className="language-card">
+                <IoRestaurantOutline className="icon-profil" />
+                <Input
+                  placeholder="Adresse du restaurant"
+                  onChange={(e) => setAddress(e.target.value)}
+                  value={address}
+                  style={{ paddingLeft: 5, width: 200 }}
+                />
+              </div>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+      <Row xs="1">
+        <Col
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 22,
+          }}
+        >
+          {errorMessage && (
+            <h5
+              style={{
+                color: "#eb4d4b",
+                margin: 15,
+              }}
+            >
+              Vérifiez que toutes les informations aient bien été remplies.
+            </h5>
+          )}
+          <Button
+            className="btn-next"
+            onClick={() => {
+              sendInvit();
+            }}
+          >
+            Envoyer l'invitation
+          </Button>
+        </Col>
+      </Row>
     </div>
   );
 };
-export default InvitCard;
+
+function mapStateToProps(state) {
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(InvitCard);

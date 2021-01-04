@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
-import ProfilCard from "../components/ProfilCard";
+import React from "react";
 import NavBar from "../components/NavBar";
 import InvitCard from "../components/InvitCard";
-import { Container, Button } from "reactstrap";
-import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Container } from "reactstrap";
 import "../App.css";
 
-const InvitPage = ({ userState, location }) => {
+const InvitPage = ({ location }) => {
   const userData = location.state;
-  console.log(userData);
+
   return (
     <div>
       <NavBar />
@@ -20,8 +17,4 @@ const InvitPage = ({ userState, location }) => {
   );
 };
 
-function mapStateToProps(state) {
-  return { userState: state.user };
-}
-
-export default connect(mapStateToProps, null)(InvitPage);
+export default InvitPage;

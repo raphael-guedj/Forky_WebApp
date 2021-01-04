@@ -310,6 +310,7 @@ router.get("/current-invit", async function (req, res, next) {
     .populate("invitations")
     .exec();
 
+  // console.log(user);
   if (user) {
     const myInvitFiletred = await user.invitations.filter(
       (invit) => invit.date > new Date(Date.now())

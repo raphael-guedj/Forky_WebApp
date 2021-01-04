@@ -8,6 +8,7 @@ import EditProfil from "../profil/EditProfil";
 import MyProfil from "../profil/MyProfil";
 import SettingsPage from "../profil/SettingsPage";
 import InvitPage from "../home/InvitPage";
+import ForkyPage from "../myforkys/MyForkyPage";
 
 const Navigation = ({ setReduxUser, userState }) => {
   const [token, setToken] = useState(null);
@@ -49,6 +50,7 @@ const Navigation = ({ setReduxUser, userState }) => {
       <Route path="/myprofil" component={MyProfil} />
       <Route path="/settings" component={SettingsPage} />
       <Route path="/sendinvitation" component={InvitPage} />
+      <Route path="/myforkys" component={ForkyPage} />
     </Switch>
   ) : (
     <Route path="/" component={LandingPage} />

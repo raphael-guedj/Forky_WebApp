@@ -496,3 +496,74 @@ INVITATION CARD-------------------------------------
   align-items: flex-start;
   justify-content: center;
 }
+
+/*--------------------------------------------------
+TAB NAV---------------------------------------------
+---------------------------------------------------*/
+.layout-Myinvitation {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 1000px;
+  margin: 25px 0px;
+}
+
+.card-invitation {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  height: 180px;
+  border: 2px solid #abd6d3;
+  margin: 2% 22%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title-invitationCard {
+  margin: 15px 0;
+  padding-left: 13px;
+}
+
+.btn-detailsinvit:hover {
+  background-color: #ececec;
+  color: #6c757d;
+}
+
+.btn-modal {
+  background-color: #418581;
+  margin: 10px;
+  width: 250px;
+  border: 1px solid#418581;
+  border-radius: 20px;
+  align-self: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.btn-closeModal {
+  background-color: #f9b34c;
+  margin: 10px;
+  width: 250px;
+  border: 1px solid #f9b34c;
+  border-radius: 20px;
+  align-self: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.btn-modal:hover {
+  background-color: #60a39f;
+  border: 1px solid #60a39f;
+}
+
+.btn-closeModal:hover {
+  background-color: #f7c57b;
+  border: 1px solid #f7c57b;
+}

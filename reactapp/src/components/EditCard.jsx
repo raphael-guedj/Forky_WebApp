@@ -26,7 +26,6 @@ import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
 import { useHistory } from "react-router-dom";
 import UploadPic from "../components/UploadPic";
 import "../App.css";
@@ -54,7 +53,6 @@ const EditCard = ({ userState }) => {
     const getUser = async () => {
       let rawResponse = await fetch(`/getmydata?id=${userState.id}`);
       let response = await rawResponse.json();
-
       response.myUser.name && setName(response.myUser.name);
       response.myUser.email && setEmail(response.myUser.email);
       response.myUser.profession && setJob(response.myUser.profession);

@@ -25,16 +25,12 @@ const SettingsPage = ({ setReduxUser, userState }) => {
       <NavBar />
       <Container className="layout-profil">
         <Row>
-          <Button
-            className="btn-landing"
-            title="Déconnexion"
-            onClick={() => handleLogOut()}
-          />
-          <Button
-            className="btn-landing"
-            title="Oui, j'ai pris ma décision"
-            onClick={() => handleDeleteUser()}
-          />
+          <Button className="btn-landing" onClick={() => handleLogOut()}>
+            Déconnexion
+          </Button>
+          <Button className="btn-next" onClick={() => handleDeleteUser()}>
+            Supprimer mon profil
+          </Button>
         </Row>
       </Container>
     </div>
