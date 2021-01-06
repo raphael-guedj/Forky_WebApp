@@ -259,7 +259,7 @@ router.get("/invitreceived", async function (req, res) {
 });
 
 router.get("/cancelinvit", async function (req, res) {
-  const invitCanceled = await invitationModel.updateOne(
+  await invitationModel.updateOne(
     {
       _id: req.query.id,
     },
@@ -271,7 +271,7 @@ router.get("/cancelinvit", async function (req, res) {
 });
 
 router.get("/acceptinvit", async function (req, res) {
-  const invitAccepted = await invitationModel.updateOne(
+  await invitationModel.updateOne(
     {
       _id: req.query.id,
     },
@@ -292,7 +292,7 @@ router.get("/checkstatusnotif", async function (req, res) {
 });
 
 router.get("/updatenotif", async function (req, res) {
-  const updateNotif = await invitationModel.updateMany(
+  await invitationModel.updateMany(
     {
       id_receiver: req.query.id,
     },
@@ -312,15 +312,13 @@ router.get("/current-invit", async function (req, res, next) {
 
   // console.log(user);
   if (user) {
-    const myInvitFiletred = await user.invitations.filter(
+    const myInvitFiltred = await user.invitations.filter(
       (invit) => invit.date > new Date(Date.now())
     );
-    const myInvitSorted = await myInvitFiletred.sort(function (a, b) {
+    const myInvitSorted = await myInvitFiltred.sort(function (a, b) {
       return a.date - b.date;
     });
-    res.json({ message: "c'est passé!", invitations: myInvitSorted });
-  } else {
-    res.json({ message: "Ca bloque quelque part" });
+    res.json({ result: true, invitations: myInvitSorted });
   }
 });
 
@@ -332,14 +330,14 @@ router.get("/passed-invit", async function (req, res, next) {
 
   if (user) {
     user.invitations.map((invit) => invit.date.setHours(23, 59, 59));
-    const myInvitFiletred = await user.invitations.filter(
+    const myInvitFiltred = await user.invitations.filter(
       (invit) => invit.date < new Date(Date.now())
     );
-    const myInvitSorted = await myInvitFiletred.sort(function (a, b) {
+    const myInvitSorted = await myInvitFiltred.sort(function (a, b) {
       return b.date - a.date;
     });
 
-    res.json({ message: "c'est passé!", invitations: myInvitSorted });
+    res.json({ result: true, invitations: myInvitSorted });
   }
 });
 

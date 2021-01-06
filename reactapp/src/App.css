@@ -137,7 +137,6 @@ NAVBAR----------------------------------------------
 
 .option-noti :hover {
   color: #5bafaa;
-  font-size: 24px;
 }
 
 .notif {
@@ -566,4 +565,24 @@ TAB NAV---------------------------------------------
 .btn-closeModal:hover {
   background-color: #f7c57b;
   border: 1px solid #f7c57b;
+}
+
+/*--------------------------------------------------
+NOTIFiC---------------------------------------------
+---------------------------------------------------*/
+
+.btn-details {
+  border: 1px solid #418581;
+  width: 120px;
+  transition: background-color 0.5s ease-in;
+  -webkit-transition: background-color 0.5s ease-in;
+  -moz-transition: background-color 0.5s ease-in;
+  -ms-transition: background-color 0.5s ease-in;
+  -o-transition: background-color 0.5s ease-in;
+}
+
+.btn-details:hover {
+  background-color: #f9b34c;
+
+  color: black;
 }

@@ -33,6 +33,7 @@ const LandingPage = () => {
           </Col>
         </Row>
         <Row xs="1" lg="2" style={{ display: "flex", alignItems: "center" }}>
+          {/* On appelle deux composants Sign In et Sign up */}
           <SignIn />
           <SignUp />
         </Row>

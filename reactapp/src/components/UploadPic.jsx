@@ -4,6 +4,7 @@ import { Input, Form, Button } from "reactstrap";
 import "../App.css";
 
 const UploadPic = ({ userState }) => {
+  //Composant pour uploader une image de son PC et l'uploader avec CLoudinary.
   const [photo, setPhoto] = useState();
 
   const sendPhoto = async () => {
@@ -34,6 +35,7 @@ const UploadPic = ({ userState }) => {
         }}
         onChange={(e) => setPhoto(e.target.files[0])}
       />
+      {/* method send photo permettant d'appeler le back via la method du fetch (plusieurs tuto evoque Axios pour faciliter l'envoi) */}
       <Button
         className="btn-upload"
         onClick={() => {

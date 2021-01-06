@@ -74,6 +74,8 @@ const EditCard = ({ userState }) => {
     getUser();
   }, []);
 
+  // au click de l'icone refresh, on rappel la route. ceci afin de remplacer le onRefresh sur React Native
+
   const handleRefresh = async () => {
     let rawResponse = await fetch(`/getmydata?id=${userState.id}`);
     let response = await rawResponse.json();
@@ -167,6 +169,7 @@ const EditCard = ({ userState }) => {
     "Vietnamien",
   ];
 
+  //Configuration Material UI
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 0;
 

@@ -12,6 +12,9 @@ import CurrentInvit from "../components/CurrentInvitCard";
 import PastInvit from "../components/PastInvitCard";
 import "../App.css";
 
+//Material UI utilise ces fonctions et methode pour afficher les tabs en haut de l'écran
+//J'ai du adapter et retirer certainesm ethodes pas utile pour obtenir mon résultat
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -76,6 +79,7 @@ const ForkyPage = () => {
   };
   return (
     <div>
+      {/* On appelle le composant navbar, et current invit + pastinvit qui affichent les cards */}
       <NavBar />
       <Container className="layout-profil">
         <Paper className={classes.root}>

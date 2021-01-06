@@ -70,6 +70,8 @@ const InvitCard = ({ userData, userState }) => {
     }
   };
 
+  //Libairie Material UI
+
   const StyledBadge = withStyles((theme) =>
     userData.isConnected
       ? {
@@ -267,7 +269,7 @@ const InvitCard = ({ userData, userState }) => {
                   />
                   <h4 className="title-about">Date proposée ?</h4>
                 </CardContent>
-
+                {/* composant MUI trés pratique pour afficher l'heure en indiquant le format  */}
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <KeyboardDatePicker
                     margin="normal"

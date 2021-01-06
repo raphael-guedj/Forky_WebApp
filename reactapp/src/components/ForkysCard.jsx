@@ -25,6 +25,8 @@ const ForkysCard = ({ invit, userState }) => {
   const [user, setUser] = useState({});
   const [open, setOpen] = useState(false);
 
+  //useHistory afin de retourner sur une page spécifique lors ce qu'on appelle cette methode
+
   let history = useHistory();
 
   useEffect(() => {
@@ -57,6 +59,8 @@ const ForkysCard = ({ invit, userState }) => {
       setOpen(false);
     }
   };
+
+  //paramétrage Material UI
 
   const StyledBadge = withStyles((theme) =>
     user.isConnected
@@ -102,6 +106,7 @@ const ForkysCard = ({ invit, userState }) => {
 
   const classes = useStyles();
 
+  //Afin d'afficher la Date correctement et non sous format UTC
   let date = new Date(invit.date);
   let dateFormat = `${date.getDate()}/${
     date.getMonth() + 1

@@ -29,6 +29,7 @@ const SignIn = ({ setReduxUser }) => {
     let response = await rawResponse.json();
 
     if (response.result) {
+      // On place le pseudo, l'id et le token dans le store Redux + on set un token en local storage
       setResponseOk(true);
       setReduxUser({
         pseudo: response.userExists.name,

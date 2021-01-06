@@ -1,0 +1,54 @@
+import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSync } from "@fortawesome/free-solid-svg-icons";
+import { Row, Col } from "reactstrap";
+import { connect } from "react-redux";
+import MyInvitReceived from "./MyInvitReceivedCard";
+
+const NotifReceived = ({ userState }) => {
+  const [invit, setInvit] = useState([]);
+
+  const getInvitReceived = async () => {
+    let rawResponse = await fetch(`/invitreceived?id=${userState.id}`);
+    let response = await rawResponse.json();
+    setInvit(response.invit);
+  };
+
+  useEffect(() => {
+    getInvitReceived();
+  }, []);
+
+  //Pour remplacer le onrefresh j'ai intégré une icon refresh qui rappelera la route
+
+  const handleRefresh = async () => {
+    let rawResponse = await fetch(`/invitreceived?id=${userState.id}`);
+    let response = await rawResponse.json();
+    setInvit(response.invit);
+  };
+
+  return (
+    <div style={{ padding: 15 }} onClick={() => handleRefresh()}>
+      <Row xs="1">
+        <Col style={{ display: "flex", justifyContent: "center" }}>
+          <FontAwesomeIcon
+            icon={faSync}
+            className="icon-about"
+            style={{ cursor: "pointer", color: "#f9b34c", fontSize: 26 }}
+          />
+        </Col>
+      </Row>
+      <Row xs="1">
+        {/* On map sur un tableau d'objet pour faire transiter un composant qui affichera un seul objet et permettre ainsi de boucler sur chaque element */}
+        {invit.map((invitation, i) => (
+          <MyInvitReceived key={invitation._id} dataInvit={invitation} />
+        ))}
+      </Row>
+    </div>
+  );
+};
+
+function mapStateToProps(state) {
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(NotifReceived);

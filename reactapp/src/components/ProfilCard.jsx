@@ -19,6 +19,8 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import "../App.css";
 
 const ProfilCard = ({ userData }) => {
+  //Librairie Material UI
+
   const StyledBadge = withStyles((theme) =>
     userData.isConnected
       ? {
