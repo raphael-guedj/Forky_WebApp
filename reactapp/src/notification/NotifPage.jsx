@@ -62,19 +62,14 @@ const useStyles = makeStyles({
   root: {
     flexGrow: 1,
   },
-  tabs: {
-    color: "#418581",
-    textDecoration: "none",
-  },
-  tab: {},
 });
 
 const NotifPage = () => {
-  const [value, setValue] = React.useState(2);
+  const [selectedTab, setSelectedTab] = React.useState(0);
   const classes = useStyles();
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setSelectedTab(newValue);
   };
   return (
     <div>
@@ -83,21 +78,33 @@ const NotifPage = () => {
       <Container className="layout-profil">
         <Paper className={classes.root}>
           <Tabs
-            value={value}
+            value={selectedTab}
             onChange={handleChange}
             indicatorColor="primary"
             textColor="primary"
             centered
+            style={{
+              backgroundColor: "#518481",
+              borderRadius: 5,
+            }}
           >
-            <LinkTab label="Mes invitations envoyées" {...a11yProps(0)} />
-            <LinkTab label="Mes invitations reçues" {...a11yProps(1)} />
+            <LinkTab
+              style={{ color: "#ececec", textDecoration: "none" }}
+              label="Mes invitations envoyées"
+              {...a11yProps(0)}
+            />
+            <LinkTab
+              style={{ color: "#ececec", textDecoration: "none" }}
+              label="Mes invitations reçues"
+              {...a11yProps(1)}
+            />
           </Tabs>
         </Paper>
 
-        <TabPanel value={value} index={0}>
+        <TabPanel value={selectedTab} index={0}>
           <NotifSent />
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={selectedTab} index={1}>
           <NotifReceived />
         </TabPanel>
       </Container>
